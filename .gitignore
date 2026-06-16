@@ -7,6 +7,5 @@ target/
 *.mv.db
 *.trace.db
 database/
-static/img/
 .DS_Store
 Thumbs.db
