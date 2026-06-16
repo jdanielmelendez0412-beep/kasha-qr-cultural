@@ -1,6 +1,8 @@
 package com.kasha;
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
@@ -13,34 +15,40 @@ import java.nio.file.Paths;
 @Component
 public class StartupImages {
 
-    @PostConstruct
-    public void init() throws IOException {
-        String staticDir = System.getenv("STATIC_DIR");
-        if (staticDir == null) {
-            staticDir = "static";
-        }
-        Path imgDir = Paths.get(staticDir, "img");
-        if (!imgDir.toFile().exists()) {
-            imgDir.toFile().mkdirs();
-        }
+    private static final Logger log = LoggerFactory.getLogger(StartupImages.class);
 
-        Path imgPath = imgDir.resolve("kasha.jpg");
-        if (!imgPath.toFile().exists()) {
-            BufferedImage img = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g = img.createGraphics();
-            g.setColor(new Color(102, 126, 234));
-            g.fillRect(0, 0, 800, 600);
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial", Font.BOLD, 40));
-            FontMetrics fm = g.getFontMetrics();
-            g.drawString("Ka'sha", 400 - fm.stringWidth("Ka'sha") / 2, 280);
-            g.setFont(new Font("Arial", Font.PLAIN, 30));
-            fm = g.getFontMetrics();
-            g.drawString("Tambor Wayuu", 400 - fm.stringWidth("Tambor Wayuu") / 2, 340);
-            g.drawString("Riohacha, La Guajira", 400 - fm.stringWidth("Riohacha, La Guajira") / 2, 390);
-            g.dispose();
-            ImageIO.write(img, "jpg", imgPath.toFile());
-            System.out.println("Imagen placeholder generada: " + imgPath.toAbsolutePath());
+    @PostConstruct
+    public void init() {
+        try {
+            String staticDir = System.getenv("STATIC_DIR");
+            if (staticDir == null) {
+                staticDir = "static";
+            }
+            Path imgDir = Paths.get(staticDir, "img");
+            if (!imgDir.toFile().exists()) {
+                imgDir.toFile().mkdirs();
+            }
+
+            Path imgPath = imgDir.resolve("kasha.jpg");
+            if (!imgPath.toFile().exists()) {
+                BufferedImage img = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
+                Graphics2D g = img.createGraphics();
+                g.setColor(new Color(102, 126, 234));
+                g.fillRect(0, 0, 800, 600);
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Arial", Font.BOLD, 40));
+                FontMetrics fm = g.getFontMetrics();
+                g.drawString("Ka'sha", 400 - fm.stringWidth("Ka'sha") / 2, 280);
+                g.setFont(new Font("Arial", Font.PLAIN, 30));
+                fm = g.getFontMetrics();
+                g.drawString("Tambor Wayuu", 400 - fm.stringWidth("Tambor Wayuu") / 2, 340);
+                g.drawString("Riohacha, La Guajira", 400 - fm.stringWidth("Riohacha, La Guajira") / 2, 390);
+                g.dispose();
+                ImageIO.write(img, "jpg", imgPath.toFile());
+                log.info("Imagen placeholder generada");
+            }
+        } catch (Exception e) {
+            log.warn("No se pudo generar la imagen placeholder (no crítico): {}", e.getMessage());
         }
     }
 }
