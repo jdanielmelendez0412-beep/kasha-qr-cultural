@@ -1,8 +1,0 @@
-com\kasha\StartupImages.class
-com\kasha\KashaApplication.class
-com\kasha\repository\VisitaRepository.class
-com\kasha\controller\ApiController.class
-com\kasha\controller\QRController.class
-com\kasha\controller\WebController.class
-com\kasha\service\EstadisticaService.class
-com\kasha\model\Visita.class
