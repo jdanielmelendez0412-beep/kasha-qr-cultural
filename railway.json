@@ -1,0 +1,11 @@
+{
+  "build": {
+    "builder": "Maven",
+    "buildCommand": "mvn clean package -DskipTests -q"
+  },
+  "deploy": {
+    "startCommand": "java -jar target/qr-cultural-riohacha-1.0.0.jar --spring.profiles.active=production",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 120
+  }
+}
