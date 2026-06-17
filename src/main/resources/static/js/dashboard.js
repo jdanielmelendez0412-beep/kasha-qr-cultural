@@ -45,39 +45,29 @@ async function cargarDashboard() {
         }
 
         const poblacionCtx = document.getElementById("chartPoblacion").getContext("2d");
+        const pob = data.total_visitas_pagina || 0;
+        const muest = data.total;
         new Chart(poblacionCtx, {
             type: "doughnut",
             data: {
-                labels: ["Encuestas completadas"],
+                labels: ["Población (visitas)", "Muestra (encuestas)"],
                 datasets: [{
-                    data: [data.total, Math.max(1, data.total)],
-                    backgroundColor: ["#C2410C", "#FFF7ED"],
-                    borderWidth: 0
+                    data: [pob, muest],
+                    backgroundColor: ["#0F766E", "#C2410C"],
+                    borderWidth: 2,
+                    borderColor: "#fff"
                 }]
             },
             options: {
-                cutout: "70%",
+                cutout: "60%",
                 responsive: true,
                 plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: false }
+                    legend: { position: "bottom", labels: { boxWidth: 12, padding: 8 } }
                 }
-            },
-            plugins: [{
-                id: "centerText",
-                beforeDraw: function(chart) {
-                    const { width, height, ctx } = chart;
-                    ctx.save();
-                    ctx.font = "bold 32px Calibri";
-                    ctx.fillStyle = "#C2410C";
-                    ctx.textAlign = "center";
-                    ctx.textBaseline = "middle";
-                    ctx.fillText(data.total, width / 2, height / 2);
-                    ctx.restore();
-                }
-            }]
+            }
         });
-        document.getElementById("totalPoblacion").textContent = data.total;
+        document.getElementById("totalPoblacion").textContent = pob;
+        document.getElementById("totalMuestra").textContent = muest;
 
         const edadLabels = data.edades.map(e => e.edad);
         const edadValores = data.edades.map(e => e.cantidad);
