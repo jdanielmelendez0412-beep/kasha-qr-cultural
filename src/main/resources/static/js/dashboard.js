@@ -94,6 +94,8 @@ async function cargarDashboard() {
         document.getElementById("mediaEdad").textContent = data.tendencia_central.media + " años";
         document.getElementById("medianaEdad").textContent = data.tendencia_central.mediana + " años";
         document.getElementById("modaEdad").textContent = data.tendencia_central.moda;
+        document.getElementById("modaProcedencia").textContent = data.procedencia_predominante;
+        document.getElementById("modaTipo").textContent = data.tipo_predominante;
 
         llenarTablaCruce("tablaMonumentoProcedencia", data.monumento_procedencia, "monumento", "procedencia");
         llenarTablaCruce("tablaMonumentoEdad", data.monumento_edad, "monumento", "edad");
