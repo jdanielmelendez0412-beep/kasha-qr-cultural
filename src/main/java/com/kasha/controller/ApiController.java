@@ -1,6 +1,7 @@
 package com.kasha.controller;
 
 import com.kasha.model.Visita;
+import com.kasha.repository.ContadorRepository;
 import com.kasha.repository.VisitaRepository;
 import com.kasha.service.EstadisticaService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,10 +20,12 @@ public class ApiController {
 
     private final EstadisticaService service;
     private final VisitaRepository repository;
+    private final ContadorRepository contadorRepository;
 
-    public ApiController(EstadisticaService service, VisitaRepository repository) {
+    public ApiController(EstadisticaService service, VisitaRepository repository, ContadorRepository contadorRepository) {
         this.service = service;
         this.repository = repository;
+        this.contadorRepository = contadorRepository;
     }
 
     @GetMapping("/api/estadisticas")
@@ -48,8 +51,14 @@ public class ApiController {
         if (session == null || session.getAttribute("admin") == null) {
             return ResponseEntity.status(403).body("Acceso denegado".getBytes());
         }
+        long totalVisitas = contadorRepository.findById(1L).map(c -> c.getTotalVisitas()).orElse(0L);
+        long totalEncuestas = repository.count();
         List<Visita> visitas = repository.findAllByOrderByIdDesc();
         StringBuilder csv = new StringBuilder();
+        csv.append("RESUMEN\n");
+        csv.append("Total visitas a la página,").append(totalVisitas).append("\n");
+        csv.append("Total encuestas completadas,").append(totalEncuestas).append("\n");
+        csv.append("\n");
         csv.append("ID,Fecha,Hora,Monumento,Edad,Procedencia,Tipo Visitante\n");
         for (Visita v : visitas) {
             csv.append(v.getId()).append(",");

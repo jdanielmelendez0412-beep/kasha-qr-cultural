@@ -1,6 +1,7 @@
 package com.kasha.controller;
 
 import com.kasha.model.Visita;
+import com.kasha.repository.ContadorRepository;
 import com.kasha.repository.VisitaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,13 +10,19 @@ import org.springframework.web.bind.annotation.*;
 public class WebController {
 
     private final VisitaRepository repository;
+    private final ContadorRepository contadorRepository;
 
-    public WebController(VisitaRepository repository) {
+    public WebController(VisitaRepository repository, ContadorRepository contadorRepository) {
         this.repository = repository;
+        this.contadorRepository = contadorRepository;
     }
 
     @GetMapping("/")
     public String index() {
+        contadorRepository.findById(1L).ifPresent(c -> {
+            c.setTotalVisitas(c.getTotalVisitas() + 1);
+            contadorRepository.save(c);
+        });
         return "index";
     }
 
