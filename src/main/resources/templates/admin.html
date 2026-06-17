@@ -24,6 +24,7 @@
             <div>
                 <span class="badge bg-primary fs-6" th:text="${#lists.size(visitas)} + ' registros'">0 registros</span>
                 <a th:href="@{/api/exportar}" class="btn btn-success btn-sm ms-2 rounded-pill">Exportar CSV</a>
+                <a th:href="@{/admin/logout}" class="btn btn-outline-danger btn-sm ms-2 rounded-pill">Cerrar sesión</a>
             </div>
         </div>
 

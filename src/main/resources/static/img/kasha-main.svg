@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'>
+  <defs>
+    <linearGradient id='sky' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:#87CEEB'/>
+      <stop offset='100%' style='stop-color:#E0F0FF'/>
+    </linearGradient>
+    <linearGradient id='drum' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:#D4A574'/>
+      <stop offset='50%' style='stop-color:#B8860B'/>
+      <stop offset='100%' style='stop-color:#8B6914'/>
+    </linearGradient>
+  </defs>
+  <rect width='800' height='600' fill='url(#sky)'/>
+  <ellipse cx='400' cy='520' rx='300' ry='30' fill='#C2B280' opacity='0.3'/>
+  <!-- Drum body -->
+  <rect x='250' y='200' width='300' height='250' rx='10' fill='url(#drum)'/>
+  <ellipse cx='400' cy='200' rx='155' ry='25' fill='#C4956A' stroke='#8B6914' stroke-width='3'/>
+  <ellipse cx='400' cy='450' rx='155' ry='25' fill='#8B6914'/>
+  <!-- Drum head details -->
+  <ellipse cx='400' cy='200' rx='140' ry='18' fill='#F5DEB3' opacity='0.6'/>
+  <!-- Wayuu pattern bands -->
+  <rect x='250' y='280' width='300' height='20' fill='#FF6B35' opacity='0.8'/>
+  <rect x='250' y='320' width='300' height='10' fill='#004E89' opacity='0.8'/>
+  <rect x='250' y='350' width='300' height='20' fill='#FFC857' opacity='0.8'/>
+  <rect x='250' y='390' width='300' height='10' fill='#FF6B35' opacity='0.8'/>
+  <!-- Base -->
+  <rect x='230' y='450' width='340' height='30' rx='5' fill='#666'/>
+  <!-- Title text -->
+  <text x='400' y='540' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='28' font-weight='bold' fill='#333'>Monumento Ka'sha — Tambor Wayuu</text>
+  <text x='400' y='575' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='16' fill='#666'>Riohacha, La Guajira — Colombia</text>
+</svg>

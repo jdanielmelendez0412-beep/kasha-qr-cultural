@@ -3,6 +3,8 @@ package com.kasha.controller;
 import com.kasha.model.Visita;
 import com.kasha.repository.VisitaRepository;
 import com.kasha.service.EstadisticaService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RestController
 public class ApiController {
@@ -42,7 +43,11 @@ public class ApiController {
     }
 
     @GetMapping("/api/exportar")
-    public ResponseEntity<byte[]> exportar() {
+    public ResponseEntity<byte[]> exportar(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("admin") == null) {
+            return ResponseEntity.status(403).body("Acceso denegado".getBytes());
+        }
         List<Visita> visitas = repository.findAllByOrderByIdDesc();
         StringBuilder csv = new StringBuilder();
         csv.append("ID,Fecha,Hora,Monumento,Edad,Procedencia,Tipo Visitante\n");

@@ -1,0 +1,68 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'>
+  <rect width='800' height='600' fill='#FDF5E6'/>
+  <!-- Wayuu geometric pattern - zen motifs -->
+  <g transform='translate(50,50)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#004E89' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#FF6B35' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#004E89'/>
+  </g>
+  <g transform='translate(220,50)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#004E89' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#FF6B35' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#004E89'/>
+  </g>
+  <g transform='translate(390,50)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#004E89' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#FF6B35' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#004E89'/>
+  </g>
+  <g transform='translate(560,50)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#004E89' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#FF6B35' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#004E89'/>
+  </g>
+  <!-- Row 2 -->
+  <g transform='translate(135,200)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#FF6B35' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#004E89' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#FF6B35'/>
+  </g>
+  <g transform='translate(305,200)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#FF6B35' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#004E89' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#FF6B35'/>
+  </g>
+  <g transform='translate(475,200)'>
+    <rect x='0' y='0' width='120' height='120' fill='none' stroke='#FF6B35' stroke-width='3'/>
+    <polygon points='60,15 105,60 60,105 15,60' fill='#004E89' opacity='0.7'/>
+    <circle cx='60' cy='60' r='20' fill='#FFC857'/>
+    <circle cx='60' cy='60' r='8' fill='#FF6B35'/>
+  </g>
+  <!-- Row 3: wider horizontal pattern -->
+  <g transform='translate(50,370)'>
+    <rect x='0' y='0' width='160' height='80' rx='10' fill='#004E89'/>
+    <path d='M20,40 L40,20 L60,40 L80,20 L100,40 L120,20 L140,40' stroke='#FFC857' stroke-width='4' fill='none'/>
+  </g>
+  <g transform='translate(280,370)'>
+    <rect x='0' y='0' width='160' height='80' rx='10' fill='#FF6B35'/>
+    <path d='M20,40 L40,20 L60,40 L80,20 L100,40 L120,20 L140,40' stroke='#FFC857' stroke-width='4' fill='none'/>
+  </g>
+  <g transform='translate(510,370)'>
+    <rect x='0' y='0' width='160' height='80' rx='10' fill='#004E89'/>
+    <path d='M20,40 L40,20 L60,40 L80,20 L100,40 L120,20 L140,40' stroke='#FFC857' stroke-width='4' fill='none'/>
+  </g>
+  <!-- Row 4: horizontal zigzag bands -->
+  <g transform='translate(50,490)'>
+    <rect x='0' y='0' width='700' height='50' rx='8' fill='#2C1810'/>
+    <path d='M0,25 L35,0 L70,25 L105,0 L140,25 L175,0 L210,25 L245,0 L280,25 L315,0 L350,25 L385,0 L420,25 L455,0 L490,25 L525,0 L560,25 L595,0 L630,25 L665,0 L700,25' stroke='#FFC857' stroke-width='3' fill='none'/>
+    <path d='M0,35 L35,60 L70,35 L105,60 L140,35 L175,60 L210,35 L245,60 L280,35 L315,60 L350,35 L385,60 L420,35 L455,60 L490,35 L525,60 L560,35 L595,60 L630,35 L665,60 L700,35' stroke='#FF6B35' stroke-width='3' fill='none'/>
+  </g>
+  <!-- Decorative dots -->
+  <text x='400' y='580' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='16' fill='#888'>Patrones tradicionales Wayuu — Tejido artesanal</text>
+</svg>

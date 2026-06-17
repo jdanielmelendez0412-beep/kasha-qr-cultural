@@ -3,11 +3,7 @@ package com.kasha.controller;
 import com.kasha.model.Visita;
 import com.kasha.repository.VisitaRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Controller
 public class WebController {
@@ -49,9 +45,4 @@ public class WebController {
         return "dashboard";
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        model.addAttribute("visitas", repository.findAllByOrderByIdDesc());
-        return "admin";
-    }
 }
