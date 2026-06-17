@@ -42,6 +42,9 @@ public class ApiController {
         data.put("edad_procedencia", service.getCruceEdadProcedencia());
         data.put("edad_tipo", service.getCruceEdadTipo());
         data.put("procedencia_tipo", service.getCruceProcedenciaTipo());
+        data.put("monumento_procedencia", service.getCruceMonumentoProcedencia());
+        data.put("monumento_edad", service.getCruceMonumentoEdad());
+        data.put("tendencia_central", service.getTendenciaCentral());
         return data;
     }
 

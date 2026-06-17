@@ -32,4 +32,10 @@ public interface VisitaRepository extends JpaRepository<Visita, Long> {
 
     @Query("SELECT v.procedencia, v.tipoVisitante, COUNT(v) FROM Visita v GROUP BY v.procedencia, v.tipoVisitante ORDER BY v.procedencia, v.tipoVisitante")
     List<Object[]> cruceProcedenciaTipo();
+
+    @Query("SELECT v.monumento, v.procedencia, COUNT(v) FROM Visita v GROUP BY v.monumento, v.procedencia ORDER BY v.monumento, v.procedencia")
+    List<Object[]> cruceMonumentoProcedencia();
+
+    @Query("SELECT v.monumento, v.edad, COUNT(v) FROM Visita v GROUP BY v.monumento, v.edad ORDER BY v.monumento, v.edad")
+    List<Object[]> cruceMonumentoEdad();
 }

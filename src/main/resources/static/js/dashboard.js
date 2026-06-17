@@ -91,6 +91,13 @@ async function cargarDashboard() {
         llenarTablaCruce("tablaEdadTipo", data.edad_tipo, "edad", "tipo_visitante");
         llenarTablaCruce("tablaProcedenciaTipo", data.procedencia_tipo, "procedencia", "tipo_visitante");
 
+        document.getElementById("mediaEdad").textContent = data.tendencia_central.media + " años";
+        document.getElementById("medianaEdad").textContent = data.tendencia_central.mediana + " años";
+        document.getElementById("modaEdad").textContent = data.tendencia_central.moda;
+
+        llenarTablaCruce("tablaMonumentoProcedencia", data.monumento_procedencia, "monumento", "procedencia");
+        llenarTablaCruce("tablaMonumentoEdad", data.monumento_edad, "monumento", "edad");
+
     } catch (e) {
         console.error("Error cargando estadísticas:", e);
     }

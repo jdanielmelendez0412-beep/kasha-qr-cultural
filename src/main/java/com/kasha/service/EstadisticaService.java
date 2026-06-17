@@ -62,6 +62,71 @@ public class EstadisticaService {
         return toCruceList(repository.cruceProcedenciaTipo(), "procedencia", "tipo_visitante");
     }
 
+    public List<Map<String, Object>> getCruceMonumentoProcedencia() {
+        return toCruceList(repository.cruceMonumentoProcedencia(), "monumento", "procedencia");
+    }
+
+    public List<Map<String, Object>> getCruceMonumentoEdad() {
+        return toCruceList(repository.cruceMonumentoEdad(), "monumento", "edad");
+    }
+
+    public Map<String, Object> getTendenciaCentral() {
+        List<Visita> visitas = repository.findAll();
+        Map<String, Object> result = new LinkedHashMap<>();
+
+        if (visitas.isEmpty()) {
+            result.put("media", "N/A");
+            result.put("mediana", "N/A");
+            result.put("moda", "N/A");
+            return result;
+        }
+
+        List<Double> valores = new ArrayList<>();
+        for (Visita v : visitas) {
+            valores.add(edadToNumero(v.getEdad()));
+        }
+        Collections.sort(valores);
+
+        double suma = 0;
+        Map<Double, Long> freq = new HashMap<>();
+        for (double v : valores) {
+            suma += v;
+            freq.merge(v, 1L, Long::sum);
+        }
+
+        double media = suma / valores.size();
+        double mediana = valores.size() % 2 == 0
+            ? (valores.get(valores.size() / 2 - 1) + valores.get(valores.size() / 2)) / 2.0
+            : valores.get(valores.size() / 2);
+        double moda = freq.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
+
+        result.put("media", String.format("%.1f", media));
+        result.put("mediana", String.format("%.1f", mediana));
+        result.put("moda", numeroToEdad((int) Math.round(moda)));
+        return result;
+    }
+
+    private double edadToNumero(String edad) {
+        switch (edad) {
+            case "Menor de 18 años": return 15;
+            case "18 a 25 años": return 21.5;
+            case "26 a 35 años": return 30.5;
+            case "36 a 45 años": return 40.5;
+            case "46 a 60 años": return 53;
+            case "Mayor de 60 años": return 65;
+            default: return 30;
+        }
+    }
+
+    private String numeroToEdad(int n) {
+        if (n < 18) return "Menor de 18 años";
+        if (n <= 25) return "18 a 25 años";
+        if (n <= 35) return "26 a 35 años";
+        if (n <= 45) return "36 a 45 años";
+        if (n <= 60) return "46 a 60 años";
+        return "Mayor de 60 años";
+    }
+
     private List<Map<String, Object>> toMapList(List<Object[]> rows, String key1, String key2) {
         List<Map<String, Object>> result = new ArrayList<>();
         for (Object[] row : rows) {
