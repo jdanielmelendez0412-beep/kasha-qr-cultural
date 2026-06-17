@@ -19,12 +19,19 @@
     </nav>
 
     <div class="container py-4">
+        <div th:if="${param.reset != null}" class="alert alert-success alert-dismissible fade show" role="alert">
+            Todos los datos han sido eliminados correctamente.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold">Panel de administración</h2>
             <div>
-                <span class="badge bg-primary fs-6" th:text="${#lists.size(visitas)} + ' registros'">0 registros</span>
+                <span class="badge bg-primary fs-6" th:text="${total} + ' registros'">0 registros</span>
                 <a th:href="@{/api/exportar}" class="btn btn-success btn-sm ms-2 rounded-pill">Exportar CSV</a>
                 <a th:href="@{/admin/logout}" class="btn btn-outline-danger btn-sm ms-2 rounded-pill">Cerrar sesión</a>
+                <form th:action="@{/admin/reset}" method="post" style="display:inline" onsubmit="return confirm('¿Estás seguro de eliminar TODOS los datos? Esta acción no se puede deshacer.');">
+                    <button type="submit" class="btn btn-danger btn-sm ms-2 rounded-pill">Reiniciar datos</button>
+                </form>
             </div>
         </div>
 

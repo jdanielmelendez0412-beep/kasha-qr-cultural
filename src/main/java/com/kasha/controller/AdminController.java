@@ -1,5 +1,6 @@
 package com.kasha.controller;
 
+import com.kasha.repository.ContadorRepository;
 import com.kasha.repository.VisitaRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 
     private final VisitaRepository repository;
+    private final ContadorRepository contadorRepository;
 
     @Value("${admin.password}")
     private String adminPassword;
 
-    public AdminController(VisitaRepository repository) {
+    public AdminController(VisitaRepository repository, ContadorRepository contadorRepository) {
         this.repository = repository;
+        this.contadorRepository = contadorRepository;
     }
 
     @GetMapping("/admin/login")
@@ -56,6 +59,21 @@ public class AdminController {
             return "redirect:/admin/login";
         }
         model.addAttribute("visitas", repository.findAllByOrderByIdDesc());
+        model.addAttribute("total", repository.count());
         return "admin";
+    }
+
+    @PostMapping("/admin/reset")
+    public String reset(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("admin") == null) {
+            return "redirect:/admin/login";
+        }
+        repository.deleteAll();
+        contadorRepository.findById(1L).ifPresent(c -> {
+            c.setTotalVisitas(0);
+            contadorRepository.save(c);
+        });
+        return "redirect:/admin?reset=ok";
     }
 }
