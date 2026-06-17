@@ -9,3 +9,4 @@ target/
 database/
 .DS_Store
 Thumbs.db
+~$*.docx
