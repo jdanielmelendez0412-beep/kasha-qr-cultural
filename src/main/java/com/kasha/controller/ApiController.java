@@ -32,6 +32,7 @@ public class ApiController {
     public Map<String, Object> estadisticas() {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("total", service.getTotalVisitas());
+        data.put("total_visitas_pagina", contadorRepository.findById(1L).map(c -> c.getTotalVisitas()).orElse(0L));
         data.put("edad_predominante", service.getEdadPredominante());
         data.put("procedencia_predominante", service.getProcedenciaPredominante());
         data.put("tipo_predominante", service.getTipoPredominante());

@@ -44,6 +44,41 @@ async function cargarDashboard() {
             return labels.map((_, i) => colores[i % colores.length]);
         }
 
+        const poblacionCtx = document.getElementById("chartPoblacion").getContext("2d");
+        new Chart(poblacionCtx, {
+            type: "doughnut",
+            data: {
+                labels: ["Encuestas completadas"],
+                datasets: [{
+                    data: [data.total, Math.max(1, data.total)],
+                    backgroundColor: ["#C2410C", "#FFF7ED"],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: "70%",
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            },
+            plugins: [{
+                id: "centerText",
+                beforeDraw: function(chart) {
+                    const { width, height, ctx } = chart;
+                    ctx.save();
+                    ctx.font = "bold 32px Calibri";
+                    ctx.fillStyle = "#C2410C";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText(data.total, width / 2, height / 2);
+                    ctx.restore();
+                }
+            }]
+        });
+        document.getElementById("totalPoblacion").textContent = data.total;
+
         const edadLabels = data.edades.map(e => e.edad);
         const edadValores = data.edades.map(e => e.cantidad);
         crearChart("chartEdad", "bar", edadLabels, edadValores, "Visitantes", colorear(edadLabels));
