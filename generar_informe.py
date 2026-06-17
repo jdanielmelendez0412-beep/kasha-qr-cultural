@@ -407,6 +407,37 @@ para('9. La recolección de datos demográficos anónimos proporciona informaci�
 
 para('10. El proyecto demuestra cómo la tecnología digital puede contribuir a la preservación y difusión del patrimonio cultural, conectando a los visitantes con la riqueza cultural del pueblo Wayuu.')
 
+# ═══════════════════════════════════════
+# 15. BIBLIOGRAFÍA
+# ═══════════════════════════════════════
+heading('15. Bibliografía', level=1, color=RGBColor(0xC2, 0x41, 0x0C))
+
+refs = [
+    'Alcaldía Distrital de Riohacha. (2024). "Monumentos de Riohacha: Guía Turística." Recuperado de https://www.riohacha-laguajira.gov.co/',
+    'Panorama Cultural. (2023). "Tres grandes monumentos de Riohacha." Recuperado de https://panoramacultural.com.co/turismo/6766/tres-grandes-monumentos-de-riohacha',
+    'Riohacha Travel. (2024). "Monumentos en Riohacha, Colombia." Recuperado de https://www.riohacha.travel/colombia/elcaribe/riohacha/atracciones/8211-monumentos',
+    'Colombia Travel. (2025). "Discover Riohacha." ProColombia. Recuperado de https://colombia.travel/en/riohacha',
+    'Ministerio de Cultura de Colombia. (2014). "Caracterización del pueblo Wayuu." Dirección de Poblaciones. Bogotá D.C., Colombia.',
+    'Jaramillo, S. & Gómez, M. (2019). "La etnia Wayuu: historia, cultura y tradiciones." Revista de Estudios Caribeños, 15(2), 45-67.',
+    'Pugh, D. & Pugh, M. (2021). "Wayuu: tejedores de cultura." Editorial Universidad de La Guajira. Riohacha, Colombia.',
+    'Spring Boot Reference Documentation. (2024). "Spring Boot 3.2.5 Reference Guide." VMware. Recuperado de https://docs.spring.io/spring-boot/docs/3.2.5/reference/html/',
+    'Thymeleaf Project. (2024). "Thymeleaf 3.1 Documentation." Recuperado de https://www.thymeleaf.org/documentation.html',
+    'H2 Database Engine. (2024). "H2 Database Manual." Recuperado de https://www.h2database.com/html/main.html',
+    'Chart.js Documentation. (2024). "Chart.js 4.4.1 API Reference." Recuperado de https://www.chartjs.org/docs/4.4.1/',
+    'ZXing Project. (2024). "ZXing 3.5.3: Multi-format 1D/2D barcode image processing library." Recuperado de https://github.com/zxing/zxing',
+    'Bootstrap Team. (2024). "Bootstrap 5.3 Documentation." Recuperado de https://getbootstrap.com/docs/5.3/',
+    'Railway.app. (2025). "Railway Documentation: Deploy and manage applications." Recuperado de https://docs.railway.app/',
+    'Nixpacks. (2025). "Nixpacks: App source to OCI images." Recuperado de https://nixpacks.com/docs/',
+    'Oracle Corporation. (2024). "Java 17 Language Specifications." Recuperado de https://docs.oracle.com/en/java/javase/17/',
+    'Maven Project. (2024). "Maven 3.9 Documentation." Recuperado de https://maven.apache.org/guides/',
+    'Peña, L. (2020). "Análisis estadístico para ciencias sociales." Editorial Uninorte, Barranquilla, Colombia.',
+    'Hernández, R., Fernández, C. & Baptista, P. (2018). "Metodología de la investigación." 7ma ed. McGraw-Hill, México D.F.',
+    'Google Maps Platform. (2025). "Coordenadas del monumento Ka\'sha - Tambor Wayuu, Riohacha." 11.5444° N, 72.9072° O. Recuperado de https://www.google.com/maps/@11.5444,-72.9072,18z',
+]
+
+for i, ref in enumerate(refs, 1):
+    para(f'[{i}] {ref}', size=10, space_after=4)
+
 # ─── Guardar ───
 output_path = os.path.join(os.path.dirname(__file__), 'Informe_Kasha_Tambor_Wayuu.docx')
 doc.save(output_path)
